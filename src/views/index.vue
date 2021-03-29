@@ -6,7 +6,7 @@
 			v-if="!hiddenMenu"
 		>
 			<template slot="logo">
-			     <img src="@/assets/MilkyLogo.png" style="width:50px;height:50px" />
+			     <img src="@/assets/H.svg" style="width:80px;height:80px;color:red" />
 			</template>
 			
 			<router-view slot="content" />
@@ -42,48 +42,65 @@ export default {
 					collapsed: false,
 					showCollapsed: true,
 					menu: [
-						{
-							key: 'template',
-							title: 'Merchant',
-							iconUrl: 'pie-chart',
-							disabled: false,
+			            {
+							key: '1',
+                            title: '资源',
+							iconUrl: 'home',
 							children: [
-								{
-									key: '/list',
-									title: '员工',
-									url: '/employee/list',
-								},
-								{
-									key: '/room',
-									title: '房间',
-									url: '/room/list',
-								},
 								{
 									key: '/game',
 									title: '剧本',
 									url: '/game/list',
 								},
 								{
+									key: '/room',
+									title: '房间',
+									url: '/room/list',
+								},
+							]
+
+						},
+						 {
+							key: '2',
+                            title: '用户',
+							iconUrl: 'User.svg',
+							children: [
+								{
+									key: '/contact',
+									title: '联系人',
+									url: '/contact/list',
+								},
+								{
+									key: '/list',
+									title: '员工',
+									url: '/employee/list',
+								},
+							]
+
+						},
+						 {
+							key: '3',
+                            title: '车',
+							iconUrl: 'car',
+							url: '/car/list'
+						},
+						{
+							key: '4',
+							title: '基础',
+							iconUrl: 'database',
+							disabled: false,
+							children: [
+								{
 									key: '/merchant',
 									title: '商家',
 									url: '/merchant/list',
 								},
-								{
-									key: '/car',
-									title: '车',
-									url: '/car/list',
-								},
+								
 								{
 									key: '/tag',
 									title: '标签',
 									url: '/tag/list',
 								},
-								{
-									key: '/contact',
-									title: '联系人',
-									url: '/contact/list',
-								}
-
 							],
 						},
 					],

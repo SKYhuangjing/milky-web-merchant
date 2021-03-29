@@ -37,6 +37,10 @@ export const listTableMixin = {
                 title: '阶段',
             }, 
             {
+                dataIndex: 'createTime',
+                title: '创建时间',
+            }, 
+            {
                 dataIndex: 'status',
                 title: '状态',
             }, 
@@ -96,8 +100,24 @@ export const listTableMixin = {
                         },
                     ]
                 },
+                 
                 {
-                "props": "startTime",
+                    "props": "startTime",
+                    renderContent: ({ value, dataSource }) => {
+                        console.log("dataSource",dataSource)
+                        
+                    return dataSource.startTime
+                    ? moment
+                            .parseZone(dataSource.startTime)
+                            .local()
+                            .format('YYYY-MM-DD HH:mm')
+                    : ''
+                    },
+        
+                },
+                
+                {
+                "props": "createTime",
                 renderContent: ({ value, dataSource }) => {
                     console.log("dataSource",dataSource)
                     
@@ -105,12 +125,10 @@ export const listTableMixin = {
                 ? moment
                         .parseZone(dataSource.createTime)
                         .local()
-                        .format('YYYY-MM-DD HH:mm')
+                        .format('YYYY-MM-DD HH:mm:ss')
                 : ''
                 },
-                
-                
-                
+    
             },],
         }
     }
