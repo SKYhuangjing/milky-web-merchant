@@ -100,6 +100,22 @@ export const listTableMixin = {
                         },
                     ]
                 },
+                 
+                {
+                    "props": "startTime",
+                    renderContent: ({ value, dataSource }) => {
+                        console.log("dataSource",dataSource)
+                        
+                    return dataSource.startTime
+                    ? moment
+                            .parseZone(dataSource.startTime)
+                            .local()
+                            .format('YYYY-MM-DD HH:mm')
+                    : ''
+                    },
+        
+                },
+                
                 {
                 "props": "createTime",
                 renderContent: ({ value, dataSource }) => {
@@ -109,12 +125,10 @@ export const listTableMixin = {
                 ? moment
                         .parseZone(dataSource.createTime)
                         .local()
-                        .format('YYYY-MM-DD HH:mm')
+                        .format('YYYY-MM-DD HH:mm:ss')
                 : ''
                 },
-                
-                
-                
+    
             },],
         }
     }
