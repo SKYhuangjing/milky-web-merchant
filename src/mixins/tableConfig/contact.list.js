@@ -99,7 +99,20 @@ export const listTableMixin = {
                         },
                     ]
                 
-                }
+                },
+                {
+                    "props": "createTime",
+                    renderContent: ({ value, dataSource }) => {
+                        console.log("dataSource",dataSource)
+                        
+                    return dataSource.createTime
+                    ? moment
+                            .parseZone(dataSource.createTime)
+                            .local()
+                            .format('YYYY-MM-DD HH:mm:ss')
+                    : ''
+                    },
+                },
             ],
         }
     }
