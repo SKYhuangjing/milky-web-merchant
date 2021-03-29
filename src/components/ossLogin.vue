@@ -5,9 +5,10 @@
 			:form="form"
 			class="login-form"
 			@submit="handleSubmit"
-		>   
-		   
-		   <span style="font-size:30px;text-align:center">商家后台</span>
+		>    
+		    <div style="text-align:center;padding-bottom:10px">
+		      <img src="@/assets/H.svg" style="width:100px;color:red;" />
+			</div>
 			<a-form-item>
 				<a-input
 					size="large"

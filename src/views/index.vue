@@ -6,7 +6,7 @@
 			v-if="!hiddenMenu"
 		>
 			<template slot="logo">
-			     <img src="@/assets/MilkyLogo.png" style="width:50px;height:50px" />
+			     <img src="@/assets/H.svg" style="width:80px;height:80px;color:red" />
 			</template>
 			
 			<router-view slot="content" />

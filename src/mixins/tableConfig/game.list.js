@@ -54,18 +54,21 @@ export const listTableMixin = {
             }],
             detailColumns: [
                 {
+                    "props": "style",
+                    renderContent: ({ value, dataSource }) => {z
+                       return <span >{dataSource.style}</span>
+                    },
+                },
+                {
                     "props": "people",
                     renderContent: ({ value, dataSource }) => {
-                        console.log("dataSource",dataSource)
                         
                     return <span >{dataSource.malePeople}男{dataSource.femalePeople}女</span>
                     },
                 },
                 {
                     "props": "createTime",
-                    renderContent: ({ value, dataSource }) => {
-                        console.log("dataSource",dataSource)
-                        
+                    renderContent: ({ value, dataSource }) => {                        
                     return dataSource.createTime
                     ? moment
                             .parseZone(dataSource.createTime)
@@ -77,7 +80,6 @@ export const listTableMixin = {
                 {
                     "props": "price",
                     renderContent: ({ value, dataSource }) => {
-                        console.log("dataSource",dataSource)
                         
                     return <span >工作日：{dataSource.weekdayPrice}<br></br>周末：{dataSource.weekendPrice}</span>
                     },
