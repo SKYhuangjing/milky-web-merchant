@@ -2,40 +2,48 @@ import TYPE_MAP from "@/views/Merchant/mapping.js";
 export const listTableMixin = {
     data() {
         return {
-            tableColumns: [{
+            tableColumns: [
+                {
+                    dataIndex: 'code',
+                    title: '编号',
+                },
+            {
                 dataIndex: 'name',
-                title: '姓名',
-                width: '100px'
-            }, {
-                dataIndex: 'style',
-                title: '风格',
-                width: '100px'
-            }, 
+                title: '名称',
+            },
             {
                 dataIndex: 'desc',
-                title: 'Desc',
-                width: '100px'
-                
+                title: '简介',
+            }, 
+             {
+                dataIndex: 'style',
+                title: '风格',
+            }, 
+            {
+                dataIndex: 'hardLevel',
+                title: '难度',
+            }, 
+            
+            {
+                dataIndex: 'duration',
+                title: '时长',
             },
             {
-                dataIndex: 'femalePeople',
-                title: 'femalePeople',
-                width: '100px'
-            },
+                dataIndex: 'people',
+                title: '人数',
+            }, 
             {
-                dataIndex: 'weekdayPrice',
-                title: 'weekdayPrice',
-                width: '100px'
+                dataIndex: 'price',
+                title: '价格',
             },
+            
             {
-                dataIndex: 'weekendPrice',
-                title: 'weekendPrice',
-                width: '100px'
-            },
+                dataIndex: 'status',
+                title: '状态',
+            }, 
             {
                 dataIndex:'createTime',
                 title:"创建时间",
-                width:'100px'
             },
             {
                 dataIndex: 'action',
@@ -43,9 +51,65 @@ export const listTableMixin = {
                 // scopedSlots: {
                 //     customRender: 'operations'
                 // },
-                width: "140px"
             }],
-            detailColumns: [],
+            detailColumns: [
+                {
+                    "props": "people",
+                    renderContent: ({ value, dataSource }) => {
+                        console.log("dataSource",dataSource)
+                        
+                    return <span >{dataSource.malePeople}男{dataSource.femalePeople}女</span>
+                    },
+                },
+                {
+                    "props": "createTime",
+                    renderContent: ({ value, dataSource }) => {
+                        console.log("dataSource",dataSource)
+                        
+                    return dataSource.createTime
+                    ? moment
+                            .parseZone(dataSource.createTime)
+                            .local()
+                            .format('YYYY-MM-DD HH:mm:ss')
+                    : ''
+                    },
+                },
+                {
+                    "props": "price",
+                    renderContent: ({ value, dataSource }) => {
+                        console.log("dataSource",dataSource)
+                        
+                    return <span >工作日：{dataSource.weekdayPrice}<br></br>周末：{dataSource.weekendPrice}</span>
+                    },
+                },
+                {
+
+                    type: "text",
+                    props: "status",
+                    mapping: [{
+                            text: '已购买',
+                            value: '0',
+                        },
+                        {
+                            text: '内测中',
+                            value: '1',
+                        }, {
+                            text: '被埋',
+                            value: '2',
+                        }, {
+                            text: '可预订',
+                            value: '3',
+                        }, {
+                            text: '暂停预定',
+                            value: '4',
+                        }, {
+                            text: '下架',
+                            value: '5',
+                        },
+                    ]
+                
+                }
+            ],
         }
     }
 }

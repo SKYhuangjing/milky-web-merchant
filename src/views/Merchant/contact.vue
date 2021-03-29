@@ -26,7 +26,7 @@
 </template>
 <script>
 import { tableConfigMixin } from '@/mixins/tableConfig/index.js'
-import { listTableMixin } from '@/mixins/tableConfig/room.list.js'
+import { listTableMixin } from '@/mixins/tableConfig/contact.list.js'
 import { addFormMixin } from '@/mixins/formConfig/CRUD.add.js'
 import axios from '@/axios'
 export default {
@@ -49,7 +49,7 @@ export default {
 			},
 			mixinsConfig: {
 				addPageUrl: '',
-				queryApi: '/api/res/room/page',
+				queryApi: '/api/contact/page',
 			},
 		}
 	},

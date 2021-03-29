@@ -6,19 +6,19 @@ export const listTableMixin = {
             tableColumns: [
                 {
                     dataIndex: 'code',
-                    title: 'Code',
+                    title: '编号',
                 },
                 {
                     dataIndex: 'name',
-                    title: 'Name',
+                    title: '名称',
                 },
                 {
                     dataIndex: 'description',
-                    title: 'Description',
+                    title: '简介',
                 },
                 {
                     dataIndex: 'mobile',
-                    title: 'Mobile',
+                    title: '联系方式',
                 },
                 {
                     dataIndex: 'address',
@@ -44,8 +44,32 @@ export const listTableMixin = {
                     const { address } = dataSource
                     console.log("dataSource",dataSource)
                     
-                return <span >{dataSource.country}/{dataSource.city}/{dataSource.area}/{dataSource.address}</span>
+                return <span >{dataSource.country} {dataSource.state} {dataSource.city} {dataSource.area} {dataSource.address}</span>
                 },
+            },
+            {
+
+                type: "text",
+                props: "status",
+                mapping: [{
+                        text: '上线',
+                        value: '1',
+                    },
+                    {
+                        text: '下线',
+                        value: '0',
+                    }, {
+                        text: '筹备中',
+                        value: '2',
+                    }, {
+                        text: '可营业',
+                        value: '3',
+                    }, {
+                        text: '暂停营业',
+                        value: '4',
+                    },
+                ]
+            
             }
             ]
         }
