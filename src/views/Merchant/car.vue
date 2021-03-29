@@ -12,7 +12,12 @@
 				@action="action"
 				:express="express"
 			>
-		
+				<template slot="status" slot-scope="text, record">
+					<a-switch
+						v-model="record.status"
+						@change="switchChangeHandel(record)"
+					></a-switch>
+				</template>
 				<span slot="action" slot-scope="text, record">
 					<a
 						href="javascript:void(0)"
@@ -26,7 +31,7 @@
 </template>
 <script>
 import { tableConfigMixin } from '@/mixins/tableConfig/index.js'
-import { listTableMixin } from '@/mixins/tableConfig/room.list.js'
+import { listTableMixin } from '@/mixins/tableConfig/car.list.js'
 import { addFormMixin } from '@/mixins/formConfig/CRUD.add.js'
 import axios from '@/axios'
 export default {
@@ -49,7 +54,7 @@ export default {
 			},
 			mixinsConfig: {
 				addPageUrl: '',
-				queryApi: '/api/res/room/page',
+				queryApi: '/api/car/page',
 			},
 		}
 	},

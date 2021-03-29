@@ -6,7 +6,7 @@
 			v-if="!hiddenMenu"
 		>
 			<template slot="logo">
-				LOGO
+			     <img src="@/assets/MilkyLogo.png" style="width:50px;height:50px" />
 			</template>
 			
 			<router-view slot="content" />
@@ -68,6 +68,21 @@ export default {
 									title: '商家',
 									url: '/merchant/list',
 								},
+								{
+									key: '/car',
+									title: '车',
+									url: '/car/list',
+								},
+								{
+									key: '/tag',
+									title: '标签',
+									url: '/tag/list',
+								},
+								{
+									key: '/contact',
+									title: '联系人',
+									url: '/contact/list',
+								}
 
 							],
 						},

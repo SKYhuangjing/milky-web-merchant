@@ -49,6 +49,27 @@ export default {
         },
 
          // add router
+         {
+            path: "/car/list",
+            name: "car",
+            component: () => import("@/views/Merchant/car.vue")
+        },
+       
+        {
+            path: "merchant/detail",
+            name: "merchantDetail",
+            component: () => import("@/views/Merchant/carDetail.vue")
+        },
+        {
+            path: "/tag/list",
+            name: "tag",
+            component: () => import("@/views/Merchant/tag.vue")
+        },
+        {
+            path: "/contact/list",
+            name: "contact",
+            component: () => import("@/views/Merchant/contact.vue")
+        },
     ],
     component: Merchant,
 }

@@ -5,7 +5,9 @@
 			:form="form"
 			class="login-form"
 			@submit="handleSubmit"
-		>
+		>   
+		   
+		   <span style="font-size:30px;text-align:center">商家后台</span>
 			<a-form-item>
 				<a-input
 					size="large"

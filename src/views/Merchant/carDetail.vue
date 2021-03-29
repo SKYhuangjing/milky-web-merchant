@@ -12,7 +12,12 @@
 				@action="action"
 				:express="express"
 			>
-		
+				<template slot="status" slot-scope="text, record">
+					<a-switch
+						v-model="record.status"
+						@change="switchChangeHandel(record)"
+					></a-switch>
+				</template>
 				<span slot="action" slot-scope="text, record">
 					<a
 						href="javascript:void(0)"

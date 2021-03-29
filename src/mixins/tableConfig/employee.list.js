@@ -10,15 +10,22 @@ export const listTableMixin = {
                 dataIndex: 'sex',
                 title: '性别',
                 width: '100px'
-            }, {
+            }, 
+            {
                 dataIndex: 'role',
-                title: 'Page Type',
+                title: '角色',
+                width: '100px'
+            },
+            
+            {
+                dataIndex: 'type',
+                title: '类型',
                 width: '100px'
             },
 
             {
                 dataIndex: 'status',
-                title: 'status',
+                title: '状态',
                 width: '100px'
             },
             {
@@ -31,7 +38,40 @@ export const listTableMixin = {
                 title: this.$t('common.label.action'),
                 width: "140px"
             }],
-            detailColumns: [],
+            detailColumns: [
+                {
+                    "props": "createTime",
+                    renderContent: ({ value, dataSource }) => {
+                        console.log("dataSource",dataSource)
+                        
+                    return dataSource.createTime
+                    ? moment
+                            .parseZone(dataSource.createTime)
+                            .local()
+                            .format('YYYY-MM-DD HH:mm:ss')
+                    : ''
+                    },
+                },
+                {
+                    
+                        type: "text",
+                        props: "role",
+                        mapping: [{
+                                text: '普通员工',
+                                value: '0',
+                            },
+                            {
+                                text: '管理员',
+                                value: '1',
+                            },
+                            {
+                                text: '老板',
+                                value: '2',
+                            },
+                        ]
+                    
+                }
+            ],
         }
     }
 }
