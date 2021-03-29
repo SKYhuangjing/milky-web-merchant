@@ -60,7 +60,7 @@ export default {
 								},
 								{
 									key: '/game',
-									title: '游戏',
+									title: '剧本',
 									url: '/game/list',
 								},
 								{
