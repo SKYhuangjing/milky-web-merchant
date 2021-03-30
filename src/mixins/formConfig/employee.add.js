@@ -31,18 +31,26 @@ export const addFormMixin = {
                             value
                         }) => {
                             console.log("value",value)
-                            let params = {
-                               
-                                uid:value.key
-                            }
+                            
 
-                            axios.get('/api/contact/page',{
-                                params
-                            }).then((res) => {
+                            axios.get(`/api/contact/id/${value.key}`).then((res) => {
                                 console.log("res",res)
                                 let zmodalForm = this.$refs.zmodalForm
                                 console.log("zm",zmodalForm)
-                                this.$refs.zmodalForm.updateForm({mobile:122})
+                                this.$nextTick(() =>{
+                                    this.$refs.zmodalForm.updateForm(
+                                        {
+                                            mobile:res.mobile,
+                                            sex:res.sex,
+                                            status:res.status,
+                                            type:res.type,
+                                            role:res.role,
+                                            
+                                        }
+                                        )
+
+                                })
+                              
                             })
                         }
                     },
@@ -50,6 +58,7 @@ export const addFormMixin = {
                     props: "mobile",
                     type: "input",
                     label: "手机号码",
+                    isDisabled:true
                    
                   },
                 
@@ -57,6 +66,7 @@ export const addFormMixin = {
                     props: "sex",
                     type: "select",
                     label: "性别",
+                    isDisabled:true,
                     options: [
                         {
                             text: 'male',
@@ -77,20 +87,20 @@ export const addFormMixin = {
                     options: [
                         {
                             text: '已签约',
-                            value: '0',
+                            value: 0,
                         },
                         {
                             text: '培训中',
-                            value: '1',
+                            value: 1,
                         }, {
                             text: '可带本',
-                            value: '2',
+                            value: 2,
                         }, {
                             text: '休假',
-                            value: '3',
+                            value: 3,
                         }, {
                             text: '离职',
-                            value: '4',
+                            value: 4,
                         },
                     ],
                     
@@ -103,11 +113,11 @@ export const addFormMixin = {
                 options: [
                     {
                         text: '兼职',
-                        value: '0',
+                        value: 0,
                     },
                     {
                         text: '全职',
-                        value: '1',
+                        value: 1,
                     },
                 ],
                 
@@ -120,15 +130,15 @@ export const addFormMixin = {
             options: [
                 {
                     text: '普通员工',
-                    value: '0',
+                    value: 0,
                 },
                 {
                     text: '管理员',
-                    value: '1',
+                    value: 1,
                 },
                 {
                     text: '老板',
-                    value: '2',
+                    value: 2,
                 },
             ],
             

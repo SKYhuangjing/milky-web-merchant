@@ -65,13 +65,12 @@ export default {
 		// 创建员工
 		zmodalHandleOk(e, values) {
 			console.log(values)
-			this.okLoading = true
 			axios
 				.post(`/api/employee/create`, {
-					contactUid:getUid(),
+					contactUid:values.name.key,
 					imgUrl:'',
-					merchantUid:getUid(),
-					name:values.name,
+					merchantUid:localStorage.getItem("uid"),
+					name:values.name.label,
 					role:values.role,
 					sex:values.sex,
 					status:values.status,
@@ -81,6 +80,7 @@ export default {
 					this.$message.success('Successful')
 					this.ipInfo = values
 					this.addEmplpyeeModal=false
+					this.getTableDatas()
 				})
 				.finally((res) => {
 					this.okLoading = false
