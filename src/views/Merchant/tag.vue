@@ -1,39 +1,45 @@
 <template>
 	<div>
 		<div class="zen-table-content">
-			
-		<ztable
+			 <div class="OptionItem">
+                <a-button type="primary" class="addItem" @click="addHandle">
+				  创建标签
+			   </a-button>
+			 
+			 </div>
+	     	<ztable
 				:tableConfig="tableConfig"
 				:dataSource="dataSource"
 				:loading="loading"
 				:pagination="pagination"
 				@change="tableChangeHandle"
 			></ztable>
+			  <zmodal
+				title="创建标签"
+				:visible="addEmplpyeeModal"
+				@handleOk="zmodalHandleOk"
+				@handleCancel="zmodalHandleCancel"
+				:destroyOnClose="true"
+				size="small"
+				:formConfig="zmodalFormConfig"
+		  >
+			</zmodal>
 		</div>
 	</div>
 </template>
 <script>
 import { tableConfigMixin } from '@/mixins/tableConfig/index.js'
 import { listTableMixin } from '@/mixins/tableConfig/tag.list.js'
+import { addFormMixin } from '@/mixins/formConfig/tag.add.js'
 import axios from '@/axios'
 export default {
-	mixins: [tableConfigMixin, listTableMixin],
+	mixins: [tableConfigMixin, listTableMixin,addFormMixin],
 	data() {
 		return {
 			dataSource: [],
 			deleteVisible: false,
-			visibleAddModal: false,
+			addEmplpyeeModal: false,
 			saveLoading: false,
-			searchConfig: {
-				add: {
-					text: this.$t('common.label.create'),
-					type: 'primary',
-					clickHandle: () => {
-						this.editUid = null
-						this.showAddModal()
-					},
-				},
-			},
 			mixinsConfig: {
 				addPageUrl: '',
 				queryApi: '/api/tag/page',
@@ -49,6 +55,31 @@ export default {
 		
 		init() {
 			this.getTableDatas()
+		},
+		addHandle(){
+            this.addEmplpyeeModal=true
+		},
+		zmodalHandleCancel(){
+            this.addEmplpyeeModal=false
+		},
+		// 创建员工
+		zmodalHandleOk(e, values) {
+			console.log(values)
+			axios
+				.post(`/api/tag/create`, {
+					customerUid: localStorage.getItem("customerUid"),
+					type:values.type,
+					value:values.value
+					
+				})
+				.then((res) => {
+					this.$message.success('Successful')
+					this.addEmplpyeeModal=false
+					this.getTableDatas()
+				})
+				.finally((res) => {
+					this.addEmplpyeeModal=false
+				})
 		},
 	},
 	mounted() {
@@ -67,4 +98,13 @@ export default {
 	cursor: pointer;
 	background-color: color(~`colorPalette('@{brand1-6}', 1) `);
 }
+.OptionItem{
+	 display: flex;
+	 justify-content:flex-end;
+	 padding: 10px 0px;
+}
+.addItem{
+
+}
+
 </style>

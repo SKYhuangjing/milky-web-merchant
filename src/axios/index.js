@@ -33,14 +33,20 @@ axios.interceptors.request.use(function (request) {
             request.headers['X-MILKY-CUSTOMER-UID']=roles.adminMerchant[0].customerUid
             request.headers['X-MILKY-MERCHANT-UID']=roles.adminMerchant[0].uid
             request.headers['X-MILKY-MERCHANT-ROLE']="ADMIN"
+            localStorage.setItem('customerUid', roles.adminMerchant[0].customerUid);
+            localStorage.setItem('uid', roles.adminMerchant[0].uid);
         }else if(roles.bossMerchant){
             request.headers['X-MILKY-CUSTOMER-UID']=roles.bossMerchant[0].customerUid
             request.headers['X-MILKY-MERCHANT-UID']=roles.bossMerchant[0].uid
             request.headers['X-MILKY-MERCHANT-ROLE']="BOSS"
+            localStorage.setItem('customerUid', roles.bossMerchant[0].customerUid);
+            localStorage.setItem('uid', roles.bossMerchant[0].uid);
         } else if(roles.employeeMerchant){
             request.headers['X-MILKY-CUSTOMER-UID']=roles.employeeMerchant[0].customerUid
             request.headers['X-MILKY-MERCHANT-UID']=roles.employeeMerchant[0].uid
             request.headers['X-MILKY-MERCHANT-ROLE']="EMPLOYEE"
+            localStorage.setItem('customerUid',roles.employeeMerchant[0].customerUid);
+            localStorage.setItem('uid', roles.employeeMerchant[0].uid);
         }
     }
     return request;

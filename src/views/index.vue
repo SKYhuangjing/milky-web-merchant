@@ -8,9 +8,11 @@
       <template slot="logo">
         <img
           src="@/assets/LogoHBlack.svg"
-          style="width: 100px;"
         />
       </template>
+       <template slot="menuHeader" >
+            222
+        </template>
 
       <router-view slot="content" />
     </zlayout>
@@ -32,7 +34,20 @@ export default {
         fixed: ["sider", "header"],
         header: {
           theme: "light", // light/dark
-          list: [],
+          list: [
+            {
+                            key: 'user',
+                            title: '用户名',
+                            img: 'User.svg'
+                        }
+          ],
+          menu: [
+                      {
+                            key: 'q2',
+                            title: 'Option 2',
+                            iconUrl: 'User.svg'
+                        }
+              ]
         },
         sider: {
           mode: "inline", // vertical vertical-right horizontal inline
