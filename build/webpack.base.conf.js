@@ -34,17 +34,19 @@ module.exports = {
       '@': resolve('src'),
     }
   },
-  externals: {
-    'vue': 'Vue',
-    'vue-router': 'VueRouter',
-    'vuex': 'Vuex',
-    'axios': 'axios',
-    'moment': 'moment',
-    'vue-i18n': 'VueI18n',
-    'vuedraggable': 'vuedraggable'
-  },
   module: {
     rules: [
+      {
+        test: /\.ico$/,
+        use: [{
+          loader: 'url-loader', // or file-loader
+          options: {
+            limit: 1,
+            name: 'img/[name].[ext]'
+          }
+        }]
+      },
+
       {
         test: /\.vue$/,
         loader: 'vue-loader',

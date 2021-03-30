@@ -7,25 +7,13 @@
 			   </a-button>
 			 
 			 </div>
-			<ztable2
-				:columns="tableColumns"
-				:detailColumns="detailColumns"
+				<ztable
+				:tableConfig="tableConfig"
 				:dataSource="dataSource"
 				:loading="loading"
 				:pagination="pagination"
 				@change="tableChangeHandle"
-				@action="action"
-				:express="express"
-			>
-				
-				<span slot="action" slot-scope="text, record">
-					<a
-						href="javascript:void(0)"
-						@click="operationsHandle(record, 'details')"
-						>details</a
-					>
-				</span>
-			</ztable2>
+			></ztable>
 			  <zmodal
 				title="创建员工"
 				:visible="addEmplpyeeModal"
@@ -34,9 +22,7 @@
 				:destroyOnClose="true"
 				size="small"
 				:formConfig="zmodalFormConfig"
-				ref="zmodalForm"
 		  >
-		    
 			</zmodal>
 		</div>
 	</div>
@@ -48,7 +34,7 @@ import { addFormMixin } from '@/mixins/formConfig/employee.add.js'
 import axios from '@/axios'
 import { getUid } from '@/utils'
 export default {
-	mixins: [tableConfigMixin, listTableMixin, addFormMixin],
+	mixins: [tableConfigMixin, listTableMixin,addFormMixin],
 	data() {
 		return {
 			dataSource: [],

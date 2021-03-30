@@ -7,8 +7,8 @@
     >
       <template slot="logo">
         <img
-          src="@/assets/H.svg"
-          style="width: 80px; height: 80px; color: red"
+          src="@/assets/LogoHBlack.svg"
+          style="width: 100px;"
         />
       </template>
 
@@ -30,8 +30,6 @@ export default {
       configData: {
         // layout: ['sider', 'header'],
         fixed: ["sider", "header"],
-        logo: "logo-img.png",
-        logoText: "logo-text.png",
         header: {
           theme: "light", // light/dark
           list: [],

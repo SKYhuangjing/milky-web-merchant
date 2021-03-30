@@ -1,36 +1,22 @@
 <template>
 	<div>
 		<div class="zen-table-content">
-			
-			<ztable2
-				:columns="tableColumns"
-				:detailColumns="detailColumns"
+			 	<ztable
+				:tableConfig="tableConfig"
 				:dataSource="dataSource"
 				:loading="loading"
 				:pagination="pagination"
 				@change="tableChangeHandle"
-				@action="action"
-				:express="express"
-			>
-		
-				<span slot="action" slot-scope="text, record">
-					<a
-						href="javascript:void(0)"
-						@click="operationsHandle(record, 'details')"
-						>details</a
-					>
-				</span>
-			</ztable2>
+			></ztable>
 		</div>
 	</div>
 </template>
 <script>
 import { tableConfigMixin } from '@/mixins/tableConfig/index.js'
 import { listTableMixin } from '@/mixins/tableConfig/room.list.js'
-import { addFormMixin } from '@/mixins/formConfig/CRUD.add.js'
 import axios from '@/axios'
 export default {
-	mixins: [tableConfigMixin, listTableMixin, addFormMixin],
+	mixins: [tableConfigMixin, listTableMixin],
 	data() {
 		return {
 			dataSource: [],

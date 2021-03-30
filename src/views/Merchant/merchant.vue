@@ -6,41 +6,29 @@
 				  创建商家
 			   </a-button>
 			 </div>
-			<ztable2
-				:columns="tableColumns"
-				:detailColumns="detailColumns"
+			<ztable
+				:tableConfig="tableConfig"
 				:dataSource="dataSource"
 				:loading="loading"
 				:pagination="pagination"
 				@change="tableChangeHandle"
-				@action="action"
-				:express="express"
-			>
-				<span slot="action" slot-scope="text, record">
-					<a
-						href="javascript:void(0)"
-						@click="operationsHandle(record, 'details')"
-						>details</a
-					>
-				</span>
-				
-			</ztable2>
-			 <a-modal
+			></ztable>
+			 <!-- <a-modal
 					title="创建商家"
 					:visible="addMerchantModal"
 					:confirm-loading="confirmLoading"
 					@cancel="handleCancel"
 					:width="900"
-					>
-					<a-form :form="form" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }"  @submit="handleSubmit">
+					> -->
+					<!-- <a-form :form="form" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }"  @submit="handleSubmit">
 							<a-form-item label="地址">
 							     <v-distpicker></v-distpicker>
 							</a-form-item>
 							<a-form-item label="电话">
 							      <a-input placeholder="请输入电话号码"  />
 							</a-form-item>
-	                </a-form>
-			  </a-modal>
+	                </a-form> -->
+			  <!-- </a-modal> -->
 		</div>
 	</div>
 </template>
