@@ -2,42 +2,41 @@ import moment from 'moment'
 export const listTableMixin = {
     data() {
         return {
-            tableColumns: [
+            tableConfig: {
+                scroll: {
+                    x: 900
+                },
+                disableFlex: true,
+                columns: [
                 {
                 
-                    dataIndex: 'type',
-                    title: '类型',
+                props: 'type',
+                   title: '类型',
                 }, 
-            {
-                dataIndex: 'value',
-                title: '名称',
-            }, 
-          
-            {
-                dataIndex:'createTime',
-                title:"创建时间",
-                width:'200px'
-            },
-            {
-                dataIndex: 'action',
-                title: 'action',
-                width: "140px"
-            }],
-            detailColumns: [
                 {
-                    "props": "createTime",
-                    renderContent: ({ value, dataSource }) => {
-                        console.log("dataSource",dataSource)
-                        
-                    return dataSource.createTime
+                    props: 'value',
+                    title: '名称',
+                }, 
+                {
+                    props:'createTime',
+                    title:"创建时间",
+                    width:'200px',
+                    type: 'render',
+                    renderContent: ({
+                        record
+                    }) => {
+                        return record.createTime
                     ? moment
-                            .parseZone(dataSource.createTime)
+                            .parseZone(record.createTime)
                             .local()
                             .format('YYYY-MM-DD HH:mm:ss')
                     : ''
                     },
                 },
-            ],
+
+                ]
+            },
+           
         }
     }
 }

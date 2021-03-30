@@ -2,28 +2,13 @@
 	<div>
 		<div class="zen-table-content">
 			
-			<ztable2
-				:columns="tableColumns"
-				:detailColumns="detailColumns"
+		<ztable
+				:tableConfig="tableConfig"
 				:dataSource="dataSource"
 				:loading="loading"
 				:pagination="pagination"
 				@change="tableChangeHandle"
-			>
-				<template slot="status" slot-scope="text, record">
-					<a-switch
-						v-model="record.status"
-						@change="switchChangeHandel(record)"
-					></a-switch>
-				</template>
-				<span slot="action" slot-scope="text, record">
-					<a
-						href="javascript:void(0)"
-						@click="operationsHandle(record, 'details')"
-						>details</a
-					>
-				</span>
-			</ztable2>
+			></ztable>
 		</div>
 	</div>
 </template>
