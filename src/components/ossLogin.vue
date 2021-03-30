@@ -7,7 +7,7 @@
 			@submit="handleSubmit"
 		>    
 		    <div style="text-align:center;padding-bottom:10px">
-		      <img src="@/assets/H.svg" style="width:100px;color:red;" />
+		      <img src="@/assets/LogoVBlack.svg" style="width:80px;color:red;" />
 			</div>
 			<a-form-item>
 				<a-input

@@ -7,8 +7,8 @@
     >
       <template slot="logo">
         <img
-          src="@/assets/H.svg"
-          style="width: 80px; height: 80px; color: red"
+          src="@/assets/LogoHBlack.svg"
+          style="width: 100px;"
         />
       </template>
 

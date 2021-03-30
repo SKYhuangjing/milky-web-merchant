@@ -37,6 +37,17 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.ico$/,
+        use: [{
+          loader: 'url-loader', // or file-loader
+          options: {
+            limit: 1,
+            name: 'img/[name].[ext]'
+          }
+        }]
+      },
+
+      {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: vueLoaderConfig
