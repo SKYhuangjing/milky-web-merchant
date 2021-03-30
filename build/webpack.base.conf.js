@@ -34,15 +34,6 @@ module.exports = {
       '@': resolve('src'),
     }
   },
-  externals: {
-    'vue': 'Vue',
-    'vue-router': 'VueRouter',
-    'vuex': 'Vuex',
-    'axios': 'axios',
-    'moment': 'moment',
-    'vue-i18n': 'VueI18n',
-    'vuedraggable': 'vuedraggable'
-  },
   module: {
     rules: [
       {

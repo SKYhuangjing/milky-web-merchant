@@ -9,8 +9,6 @@
 				:loading="loading"
 				:pagination="pagination"
 				@change="tableChangeHandle"
-				@action="action"
-				:express="express"
 			>
 				<template slot="status" slot-scope="text, record">
 					<a-switch
@@ -32,10 +30,9 @@
 <script>
 import { tableConfigMixin } from '@/mixins/tableConfig/index.js'
 import { listTableMixin } from '@/mixins/tableConfig/tag.list.js'
-import { addFormMixin } from '@/mixins/formConfig/CRUD.add.js'
 import axios from '@/axios'
 export default {
-	mixins: [tableConfigMixin, listTableMixin, addFormMixin],
+	mixins: [tableConfigMixin, listTableMixin],
 	data() {
 		return {
 			dataSource: [],

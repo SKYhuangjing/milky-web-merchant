@@ -1,4 +1,4 @@
-import TYPE_MAP from "@/views/Merchant/mapping.js";
+import moment from 'moment'
 export const listTableMixin = {
     data() {
         return {
@@ -47,7 +47,7 @@ export const listTableMixin = {
             },
             {
                 dataIndex: 'action',
-                title: this.$t('common.label.action'),
+                title: 'action',
                 // scopedSlots: {
                 //     customRender: 'operations'
                 // },
@@ -55,7 +55,7 @@ export const listTableMixin = {
             detailColumns: [
                 {
                     "props": "style",
-                    renderContent: ({ value, dataSource }) => {z
+                    renderContent: ({ value, dataSource }) => {
                        return <span >{dataSource.style}</span>
                     },
                 },

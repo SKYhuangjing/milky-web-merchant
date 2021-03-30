@@ -9,8 +9,6 @@
 				:loading="loading"
 				:pagination="pagination"
 				@change="tableChangeHandle"
-				@action="action"
-				:express="express"
 			>
 		
 				<span slot="action" slot-scope="text, record">
@@ -27,26 +25,15 @@
 <script>
 import { tableConfigMixin } from '@/mixins/tableConfig/index.js'
 import { listTableMixin } from '@/mixins/tableConfig/contact.list.js'
-import { addFormMixin } from '@/mixins/formConfig/CRUD.add.js'
 import axios from '@/axios'
 export default {
-	mixins: [tableConfigMixin, listTableMixin, addFormMixin],
+	mixins: [tableConfigMixin, listTableMixin],
 	data() {
 		return {
 			dataSource: [],
 			deleteVisible: false,
 			visibleAddModal: false,
 			saveLoading: false,
-			searchConfig: {
-				add: {
-					text: this.$t('common.label.create'),
-					type: 'primary',
-					clickHandle: () => {
-						this.editUid = null
-						this.showAddModal()
-					},
-				},
-			},
 			mixinsConfig: {
 				addPageUrl: '',
 				queryApi: '/api/contact/page',

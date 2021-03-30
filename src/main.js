@@ -23,7 +23,8 @@ import i18n from './i18n'
 // import plugins
 import plugin from './plugins'
 Vue.use(plugin)
-
+import ref from "vue-ref";
+Vue.use(ref, { name: "ant-ref" });
 
 import zenUi from '@zenlayer/zen-ui'
 Vue.use(zenUi);

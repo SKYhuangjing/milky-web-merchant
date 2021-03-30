@@ -6,7 +6,10 @@ import commonLanguage from './common'
 const i18n = new VueI18n({
     locale: 'en',
     messages: {
-        ...commonLanguage
-    }
+        ...commonLanguage,
+
+    },
+    silentTranslationWarn: true,
+
 })
 export default i18n

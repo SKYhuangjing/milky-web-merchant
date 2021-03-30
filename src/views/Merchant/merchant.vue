@@ -13,8 +13,6 @@
 				:loading="loading"
 				:pagination="pagination"
 				@change="tableChangeHandle"
-				@action="action"
-				:express="express"
 			>
 				<span slot="action" slot-scope="text, record">
 					<a

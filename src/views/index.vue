@@ -30,8 +30,6 @@ export default {
       configData: {
         // layout: ['sider', 'header'],
         fixed: ["sider", "header"],
-        logo: "logo-img.png",
-        logoText: "logo-text.png",
         header: {
           theme: "light", // light/dark
           list: [],
