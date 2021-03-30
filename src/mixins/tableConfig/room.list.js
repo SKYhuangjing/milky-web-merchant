@@ -15,10 +15,23 @@ export const listTableMixin = {
                 {
                     props: 'name',
                     title: '名称',
+                   
                 }, {
                     
                     props: 'style',
                     title: '风格',
+                    type: 'render',
+                    renderContent: ({
+                        record
+                    }) => {
+                        let arr=record.style.split(',')
+                        console.log("arr",arr)
+                        let resoult = ''
+                        for (let i = 0; i < arr.length; i++) {
+                            resoult += `<span style="border:1px solid #b7becb;padding:0px 7px;border-radius:4px;background:#eef1f4;word-wrap: break-word;word-break: keep-all; white-space: pre-wrap">${arr[i]}</span> `
+                        }
+                        return resoult
+                    }
                 }, {
                     props: 'maxPeople',
                     title: '最多人数',
