@@ -21,6 +21,7 @@
 				@handleCancel="zmodalHandleCancel"
 				:destroyOnClose="true"
 				size="small"
+				ref="zmodalForm"
 				:formConfig="zmodalFormConfig"
 		  >
 			</zmodal>
