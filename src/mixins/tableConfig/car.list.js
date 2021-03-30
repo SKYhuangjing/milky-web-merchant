@@ -57,12 +57,19 @@ export const listTableMixin = {
                     renderContent: ({
                         record
                     }) => {
-                       return  `<span>玩家已就位:${record.playerReady?'是':'否'}<br></br>DM 已就位:${record.actorReady?'是':'否'}</span>`
+                       return  `<span>${record.shared?"是":"否"}</span>`
                     },
                 }, 
                 {
                     props: 'stage',
                     title: '阶段',
+                    type: 'render',
+                    renderContent: ({
+                        record
+                    }) => {
+                       return  `<span>玩家已就位:${record.playerReady?'是':'否'}<br></br>DM 已就位:${record.actorReady?'是':'否'}</span>`
+                    },
+                
                 }, 
                 {
                     props: 'createTime',
