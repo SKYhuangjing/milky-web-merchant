@@ -11,7 +11,14 @@
         />
       </template>
        <template slot="menuHeader" >
-            222
+            <a-dropdown>
+            <a-menu slot="overlay" @click="handleMenuClick">
+              <a-menu-item key="1" @click="logoutHandle"> <a-icon type="logout" />退出登陆 </a-menu-item>
+              <a-menu-item key="2"> <a-icon type="user" />预留1 </a-menu-item>
+              <a-menu-item key="3"> <a-icon type="user" />预留1 </a-menu-item>
+            </a-menu>
+            <a-button style="margin-left: 8px"> 用户名 <a-icon type="down" /> </a-button>
+          </a-dropdown>
         </template>
 
       <router-view slot="content" />
@@ -23,7 +30,9 @@
 </template>
 
 <script>
+import axios from '@/axios'
 export default {
+  
   name: "",
   components: {},
   data() {
@@ -35,19 +44,13 @@ export default {
         header: {
           theme: "light", // light/dark
           list: [
-            {
-                            key: 'user',
-                            title: '用户名',
-                            img: 'User.svg'
-                        }
-          ],
-          menu: [
-                      {
-                            key: 'q2',
-                            title: 'Option 2',
-                            iconUrl: 'User.svg'
-                        }
-              ]
+                   {
+                      key: 'user',
+                      title: '用户名',
+                      img: 'User.svg'
+                  }
+              ],
+         
         },
         sider: {
           mode: "inline", // vertical vertical-right horizontal inline
@@ -131,6 +134,20 @@ export default {
     },
     targetElement(e) {},
     submitUTT() {},
+    logoutHandle(){
+      console.log("退出登陆")
+        axios
+				.post(`/api/logout`)
+				.then((res) => {
+              localStorage.removeItem('customerUid')
+              localStorage.removeItem('user')
+              localStorage.removeItem('roles')
+              localStorage.removeItem('uid')
+              this.$router.replace({
+                path: '/login',
+              })
+        })
+    }
   },
   created() {},
 };
