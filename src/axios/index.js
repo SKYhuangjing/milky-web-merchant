@@ -27,28 +27,37 @@ axios.interceptors.request.use(function (request) {
     if (jwt) {
         request.headers['Authorization'] = "Bearer " + jwt
     }
+
     let roles=JSON.parse(localStorage.getItem("roles"))
-    if(roles){
-        if(roles.adminMerchant){
+    console.log("roles",roles,roles.adminMerchant||roles.bossMerchant||roles.employeeMerchant)
+    console.log("1",roles.adminMerchant)
+    console.log("1",roles.bossMerchant)
+    console.log("1",roles.employeeMerchant)
+    console.log()
+    if([]){
+        console.log("3333")
+    }
+        if(roles.adminMerchant&&roles.adminMerchant.length){
             request.headers['X-MILKY-CUSTOMER-UID']=roles.adminMerchant[0].customerUid
             request.headers['X-MILKY-MERCHANT-UID']=roles.adminMerchant[0].uid
             request.headers['X-MILKY-MERCHANT-ROLE']="ADMIN"
             localStorage.setItem('customerUid', roles.adminMerchant[0].customerUid);
             localStorage.setItem('uid', roles.adminMerchant[0].uid);
-        }else if(roles.bossMerchant){
+        }else if(roles.bossMerchant&&roles.bossMerchant.length){
             request.headers['X-MILKY-CUSTOMER-UID']=roles.bossMerchant[0].customerUid
             request.headers['X-MILKY-MERCHANT-UID']=roles.bossMerchant[0].uid
             request.headers['X-MILKY-MERCHANT-ROLE']="BOSS"
             localStorage.setItem('customerUid', roles.bossMerchant[0].customerUid);
             localStorage.setItem('uid', roles.bossMerchant[0].uid);
-        } else if(roles.employeeMerchant){
+        } else if(roles.employeeMerchant&&roles.employeeMerchant.length){
             request.headers['X-MILKY-CUSTOMER-UID']=roles.employeeMerchant[0].customerUid
             request.headers['X-MILKY-MERCHANT-UID']=roles.employeeMerchant[0].uid
             request.headers['X-MILKY-MERCHANT-ROLE']="EMPLOYEE"
             localStorage.setItem('customerUid',roles.employeeMerchant[0].customerUid);
             localStorage.setItem('uid', roles.employeeMerchant[0].uid);
         }
-    }
+    
+    console.log("request",request)
     return request;
 });
 

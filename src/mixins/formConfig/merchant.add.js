@@ -11,34 +11,58 @@ export const addFormMixin = {
                         props: "name",
                         type: "input",
                         label: "姓名",
+                        col:12
                        
                 },
-                {
-                    type: "input",
-                    props: "address",
-                    label: "imgUrl",
-            
-                },
                  {
-                    props: "sex",
+                    props: "description",
                     type: "input",
-                    label: "性别",
+                    label: "简介",
+                    col:12
                    
                 },
                 {
-                    props:"role",
+                    props:"mobile",
                     type:'input',
-                    label:"角色"
+                    label:"手机号码",
+                    col:12
                 },
                 {
                     props: "status",
-                    type: "input",
+                    type: "select",
                     label: "状态", 
+                    col:12,
+                    options:[
+                        {
+                            text: '上线',
+                            value: '1',
+                        },
+                        {
+                            text: '下线',
+                            value: '0',
+                        }, {
+                            text: '筹备中',
+                            value: '2',
+                        }, {
+                            text: '可营业',
+                            value: '3',
+                        }, {
+                            text: '暂停营业',
+                            value: '4',
+                        },
+                    ]
                 },
                 {
-                    props: "type",
-                    type: "input",
-                    label: "类型", 
+                    props: "source",
+                    type: "select",
+                    label: "来源", 
+                    col:12,
+                    options:[
+                        {
+                            text: 'Internal',
+                            value: 'Internal',
+                        },
+                    ]
                 },
 
                 ],

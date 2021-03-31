@@ -13,22 +13,25 @@
 				:pagination="pagination"
 				@change="tableChangeHandle"
 			></ztable>
-			 <!-- <a-modal
-					title="创建商家"
-					:visible="addMerchantModal"
-					:confirm-loading="confirmLoading"
-					@cancel="handleCancel"
-					:width="900"
-					> -->
-					<!-- <a-form :form="form" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }"  @submit="handleSubmit">
-							<a-form-item label="地址">
-							     <v-distpicker></v-distpicker>
-							</a-form-item>
-							<a-form-item label="电话">
-							      <a-input placeholder="请输入电话号码"  />
-							</a-form-item>
-	                </a-form> -->
-			  <!-- </a-modal> -->
+			  <zmodal
+				title="创建剧本"
+				:visible="visibleAddModal"
+				@handleOk="zmodalHandleOk"
+				@handleCancel="zmodalHandleCancel"
+				@submit="handleSubmit"
+				:destroyOnClose="true"
+				size="middle"
+				:formConfig="zmodalFormConfig"
+		      >  
+			  <template>
+				   <a-form :form="form" :label-col="{ span: 5 }" :wrapper-col="{ span: 12 }" @submit="handleSubmit">
+				   <a-form-item label="地址" :label-col="{ span: 4 }"  >
+                        <v-distpicker></v-distpicker>
+                    </a-form-item>
+					 </a-form>
+			  </template>
+			</zmodal>
+		
 		</div>
 	</div>
 </template>
@@ -42,7 +45,7 @@ export default {
 	data() {
 		return {
 			dataSource: [],
-			addMerchantModal: false,
+			visibleAddModal: false,
 			saveLoading: false,
 			mixinsConfig: {
 				addPageUrl: '',
@@ -64,41 +67,33 @@ export default {
 			this.getTableDatas()
 		},
 		addHandle(){
-            this.addMerchantModal=true
+            this.visibleAddModal=true
 		},
-		 handleCancel(e) {
-				this.addMerchantModal = false;
+		 zmodalHandleCancel(e) {
+				this.visibleAddModal = false;
 		},
 		// 创建员工
-		handleOk(e, values) {
+		zmodalHandleOk(e, values) {
 			console.log(values)
-			this.form.validateFields((err, values) => {
-				if (!err) {
-				     console.log('Received values of form: ', values);
-				}
-			});
-			this.okLoading = true
+		     return
 			axios
-				.post(`/api/employee/create`, {
-					contactUid:getUid(),
-					imgUrl:'',
-					merchantUid:getUid(),
-					name:values.name,
-					role:values.role,
-					sex:values.sex,
-					status:values.status,
-					type:values.type
+				.post(`/api/merchant/create`, {
+					merchantUid:localStorage.getItem("uid")
 				})
 				.then((res) => {
 					this.$message.success('Successful')
 					this.ipInfo = values
-					this.addMerchantModal=false
+					this.visibleAddModal=false
 				})
 				.finally((res) => {
 					this.okLoading = false
-					this.addMerchantModal=false
+					this.visibleAddModal=false
 				})
 		},
+		handleSubmit(value){
+			console.log("submit",value)
+			return
+		}
 	},
 	mounted() {
 		this.init()
