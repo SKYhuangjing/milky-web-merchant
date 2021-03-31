@@ -12,7 +12,7 @@
       </template>
        <template slot="menuHeader" >
             <a-dropdown>
-            <a-menu slot="overlay" @click="handleMenuClick">
+            <a-menu slot="overlay">
               <a-menu-item key="1" @click="logoutHandle"> <a-icon type="logout" />退出登陆 </a-menu-item>
               <a-menu-item key="2"> <a-icon type="user" />预留1 </a-menu-item>
               <a-menu-item key="3"> <a-icon type="user" />预留1 </a-menu-item>
