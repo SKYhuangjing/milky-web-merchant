@@ -58,7 +58,7 @@ export const addFormMixin = {
                   },
                   {   col:12,
                     type: "radioGroup",
-                    label: "装扮",
+                    label: "换装",
                     title: "radioGroup",
                     props: "dressUp",
                     options: [
@@ -117,15 +117,40 @@ export const addFormMixin = {
                         },
                     ]
                 },
+                {
+                    type: 'group',
+                    label: '人数',
+                    props: "people",
+                    subColumns: [
+                        {
+                            type: 'input',
+                            props: 'malePeople',
+                            col: 12,
+                            addonBefore: '男',
+                            isHidden: false
+                        },
+                        {
+                            type: 'input',
+                            props: 'femalePeople',
+                            col: 12,
+                            addonBefore: '女',
+                            isHidden: false
+                        },
+                    ]
+                },
                
             {   
                 type: 'todo-list',
                 label: '创建角色',
                 props: 'createGameRoleRequests',
                 subColumns: [
-                    { type: 'input', props: 'name',addonBefore: '名称', col: 8, },
-                    { type: 'input', props: 'sex',  addonBefore: '性别', col: 7,},
-                    { type: 'input', props: 'desc',  addonBefore: '描述', col: 7,},
+                    { type: 'input', props: 'name',addonBefore: '名称', col: 4, },
+                    {  type: "radioGroup",props: "sex",
+                        options: [
+                            { label: '男', value: 'male'},
+                            { label: '女', value: 'female' },
+                        ], col: 4,},
+                    { type: 'input', props: 'desc',  addonBefore: '描述', col: 14,},
                 ]
             },
             {

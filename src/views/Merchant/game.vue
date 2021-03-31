@@ -83,6 +83,8 @@ export default {
 					status:values.status,
 					weekdayPrice:values.price.weekdayPrice,
 					weekendPrice:values.price.weekendPrice,
+					malePeople:values.people.malePeople,
+					femalePeople:values.people.femalePeople,
 					merchantUid:localStorage.getItem("uid")
 
 				})
